@@ -161,6 +161,59 @@ button[type="submit"] {
 
 button[type="submit"]:hover { filter: brightness(1.2); transform: translateY(-2px); }
 
+footer {
+    background-color: #1e2326;
+    color: #fff;
+    padding: 50px 0 30px 0;
+    text-align: center;
+    position: relative;
+}
+
+footer .redes {
+    margin-bottom: 20px;
+}
+
+footer .redes a {
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid #1cb698;
+    border-radius: 100%;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: .3s;
+}
+
+footer .redes a:hover {
+    background-color: #1cb698;
+    transform: translateY(-5px);
+}
+
+footer .arriba {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #1cb698;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: -25px;
+    transform: translateX(-50%);
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+footer p {
+    color: #565656;
+    font-size: 14px;
+}
+
+
+
 /* =========================================
    RESPONSIVE
    ========================================= */
