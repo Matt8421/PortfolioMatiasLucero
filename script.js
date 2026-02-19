@@ -1,45 +1,98 @@
+/**
+ * LÓGICA DE NAVEGACIÓN Y FORMULARIO
+ * Matias Lucero - Fullstack Portfolio
+ */
+
 let menuVisible = false;
-/* Funcion que oculta o muestra el menu */
-function mostrarOcultarMenu(){
-    if (menuVisible){
-        document.getElementById("nav").classList ="";
-        menuVisible = false;   
-    }else {
-        document.getElementById("nav").classList ="responsive";
-        menuVisible = true; 
+
+// Muestra/Oculta el menú en móviles
+function mostrarOcultarMenu() {
+    const nav = document.getElementById("nav");
+    if (menuVisible) {
+        nav.classList = "";
+        menuVisible = false;
+    } else {
+        nav.classList = "responsive";
+        menuVisible = true;
     }
 }
 
-function seleccionar(){
-    /* Oculto el menu una vez que selecciono una opcion */
-    document.getElementById("nav").classList ="";
+// Cierra el menú al elegir una opción
+function seleccionar() {
+    document.getElementById("nav").classList = "";
     menuVisible = false;
 }
-/* Funcion que aplica las animaciones de las habilidades */
-function efectoHabilidades(){
-    var skills = document.getElementById("skills");
-    var distancia_skills = window.innerHeight - skills.getBoundingClientRect().top;
-    if(distancia_skills >=300){
-        let habilidades = document.getElementsByClassName("progreso");
-        habilidades[0].classList.add("html");
-        habilidades[1].classList.add("css");
-        habilidades[2].classList.add("javascript");
-        habilidades[3].classList.add("react");
-        habilidades[4].classList.add("java");
 
-        habilidades[5].classList.add("comunicacion");
-        habilidades[6].classList.add("trabajoenequipo");
-        habilidades[7].classList.add("creatividad");
-        habilidades[8].classList.add("dedicacion");
-        habilidades[9].classList.add("proactividad");
-        habilidades[10].classList.add("empatia");
-        habilidades[11].classList.add("colaboracion");
-        
-        
+// Validación y envío del formulario vía Fetch
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("form-contacto");
+
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            
+            // 1. Captura de valores
+            const nombre = form.querySelector('input[name="nombre"]').value.trim();
+            const email = form.querySelector('input[name="email"]').value.trim();
+            const mensaje = form.querySelector('textarea[name="mensaje"]').value.trim();
+            const btn = document.getElementById("btn-enviar");
+
+            // 2. Lógica de validación (Regex para solo letras en nombre)
+            const nombreRegex = /^[a-zA-ZÀ-ÿ\s]{3,40}$/;
+            
+            if (!nombreRegex.test(nombre)) {
+                alert("Por favor, poné un nombre válido (solo letras, mín. 3).");
+                return;
+            }
+
+            if (mensaje.length < 10) {
+                alert("El mensaje es muy corto, contame un poco más.");
+                return;
+            }
+
+            // 3. Si pasa las validaciones, enviamos
+            btn.innerHTML = 'Enviando... <i class="fa-solid fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    alert("¡Perfecto! El mensaje fue enviado a mi correo.");
+                    form.reset();
+                } else {
+                    alert("Uy, algo falló. Probá de nuevo.");
+                }
+            } catch (error) {
+                alert("Parece que hay un problema de conexión.");
+            } finally {
+                btn.innerHTML = 'Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>';
+                btn.disabled = false;
+            }
+        });
     }
-}
-/* Detecto el escrolling para aplicar la animacion de la barra de habilidades */
+});
 
-window.onscroll = function(){
-    efectoHabilidades();
-}
+
+// Animación simple de entrada para las secciones al scrollear
+window.addEventListener('scroll', () => {
+    const secciones = document.querySelectorAll('.contenido-seccion');
+    const triggerBottom = window.innerHeight / 5 * 4;
+
+    secciones.forEach(seccion => {
+        const sectionTop = seccion.getBoundingClientRect().top;
+        if(sectionTop < triggerBottom) {
+             seccion.classList.add('visible'); // <--- Cambiamos style por classList
+        }
+    });
+});
+
+
+
+

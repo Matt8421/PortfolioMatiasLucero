@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>PortfolioMatiasLucero</title>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+    <title>Matias Lucero | Fullstack Developer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Menu Header -->
+    <!-- MENU HEADER -->
     <div class="contenedor-header">
         <header>
             <div class="logo">
@@ -20,9 +21,9 @@
                     <li><a href="#inicio" onclick="seleccionar()">INICIO</a></li>
                     <li><a href="#sobremi" onclick="seleccionar()">SOBRE MI</a></li>
                     <li><a href="#skills" onclick="seleccionar()">SKILLS</a></li>
-                    <li><a href="#curriculum" onclick="seleccionar()">CURRICULUM</a></li>
                     <li><a href="#portfolio" onclick="seleccionar()">PORTFOLIO</a></li>
                     <li><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
+                    <li><a href="./assets/CV.MATIAS-LUCERO.pdf" download class="nav-cv">CV <i class="fa-solid fa-download"></i></a></li>
                 </ul>
             </nav>
             <div class="nav-responsive" onclick="mostrarOcultarMenu()">
@@ -30,399 +31,191 @@
             </div>
         </header>
     </div>
-    <!-- Seccion Inicio -->
+
+    <!-- SECCION INICIO -->
     <section id="inicio" class="inicio">
         <div class="contenido-banner">
             <div class="contenedor-img">
-                <img src="./assets/FotoCv (2).jpeg" alt="Foto Perfil Matias">
+                <img src="./assets/FotoCv (2).jpeg" alt="Matías Lucero">
             </div>
             <h1>Matías Lucero</h1>
-            <h2>Desarrollador FullStack</h2>
+            <h2>Desarrollador FullStack (MERN & Java)</h2>
             <div class="redes">
-                <a href="https://github.com/Matt8421?tab=repositories" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/matias-joel-lucero-a1a884110/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/mati_lucero84/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
     </section>
-    <!-- Seccion Sobre Mi -->
+
+    <!-- SECCION SOBRE MI -->
     <section id="sobremi" class="sobremi">
         <div class="contenido-seccion">
             <h2>Sobre Mí</h2>
-            <p><span>Hola, soy Matías Lucero.</span> Desarrollador  con experiencia en Java y JavaScript, con conocimientos en desarrollo web full stack (MERN) y nociones de Python para analisis de datos. Actualmente trabajo como técnico químico en Holcim( 17 años de experiencia) Estoy en transición hacia el sector IT. Los conocimientos y habilidades adquiridos durante mis años de experiencia me permiten aportar organización, análisis y trabajo en equipo a los proyectos de desarrollo.</p>
+            <p><span>Hola, soy Matías Lucero.</span> Desarrollador con sólida base en Java y JavaScript. Mi perfil combina la 17 años como técnico químico en <strong>Holcim</strong> con la pasión por el desarrollo Full Stack. Aporto organización, análisis crítico y resolución de problemas complejos al sector IT.</p>
 
             <div class="fila">
-                <!-- Datos Personales -->
                 <div class="col">
                     <h3>Datos Personales</h3>
                     <ul>
-                        <li>
-                            <strong>Cumpleaños</strong>
-                            21-08-1984
-                        </li>
-                        <li>
-                            <strong>Teléfono</strong>
-                            02616741000
-                        </li>
-                        <li>
-                            <strong>Email</strong>
-                            matiaslucero21884@gmail.com
-                        </li>
-                        <li>
-                            <strong>Dirección</strong>
-                            Francisco Moyano 1551 , Ciudad-Mendoza. Argentina
-                        </li>
+                        <li><strong>Cumpleaños:</strong> 21-08-1984</li>
+                        <li><strong>Teléfono:</strong> 02616741000</li>
+                        <li><strong>Email:</strong> matiaslucero21884@gmail.com</li>
+                        <li><strong>Ubicación:</strong> Mendoza, Argentina</li>
                     </ul>
                 </div>
-
-                <!-- Intereses -->
                 <div class="col">
                     <h3>Intereses</h3>
                     <div class="contenedor-intereses">
-                        <div class="interes">
-                            <i class="fa-solid fa-gamepad"></i>
-                            <span>JUEGOS</span>
-                        </div>
-                        <div class="interes">
-                            <i class="fa-solid fa-headphones"></i>
-                            <span>MÚSICA</span>
-                        </div>
-                        <div class="interes">
-                            <i class="fa-solid fa-plane"></i>
-                            <span>VIAJAR</span>
-                        </div>
-                        <div class="interes">
-                            <i class="fa-solid fa-dumbbell"></i>
-                            <span>CROSSFIT</span>
-                        </div>
-                        <div class="interes">
-                            <i class="fa-solid fa-film"></i>
-                            <span>CINE</span>
-                        </div>
-                        <div class="interes">
-                            <i class="fa-solid fa-book"></i>
-                            <span>LEER</span>
-                        </div>
-                        <div class="interes">
-                            <i class="fa-solid fa-burger"></i>
-                            <span>COMIDA</span>
-                        </div>
-                        <div class="interes">
-                            <i class="fa-solid fa-om"></i>
-                            <span>YOGA</span>
-                        </div>
-
+                        <div class="interes"><i class="fa-solid fa-gamepad"></i><span>JUEGOS</span></div>
+                        <div class="interes"><i class="fa-solid fa-headphones"></i><span>MÚSICA</span></div>
+                        <div class="interes"><i class="fa-solid fa-dumbbell"></i><span>CROSSFIT</span></div>
+                        <div class="interes"><i class="fa-solid fa-om"></i><span>YOGA</span></div>
                     </div>
                 </div>
             </div>
-            <button>
-                Descargar CV <i class="fa-solid fa-download"></i>
-                <span class="overlay"></span>
-            </button>
         </div>
     </section>
-    <!-- Seccion Skills -->
+
+    <!-- SECCION SKILLS (Diseño de Badges) -->
     <section class="skills" id="skills">
         <div class="contenido-seccion">
             <h2>Skills</h2>
             <div class="fila">
-                <!-- Technical Skills -->
                 <div class="col">
-                    <h3>Technical Skills</h3>
-                    <div class="skill">
-                        <span>HTML</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>89%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>CSS</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>89%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Javascript</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>80%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>React</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>65%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Java</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>70%</span>
-                            </div>
-                        </div>
+                    <h3>Hard Skills</h3>
+                    <div class="contenedor-badges">
+                        <div class="badge"><i class="fa-brands fa-html5"></i> HTML/CSS</div>
+                        <div class="badge"><i class="fa-brands fa-js"></i> JavaScript</div>
+                        <div class="badge"><i class="fa-brands fa-react"></i> React.js</div>
+                        <div class="badge"><i class="fa-brands fa-java"></i> Java Core</div>
+                        <div class="badge"><i class="fa-solid fa-leaf"></i> Spring Boot</div>
+                        <div class="badge"><i class="fa-solid fa-database"></i> SQL / NoSQL</div>
                     </div>
                 </div>
-                <!-- Profesional Skills -->
                 <div class="col">
-                    <h3>Profesional Skills</h3>
-                    <div class="skill">
-                        <span>Comunicación</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>81%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Trabajo en Equipo</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>95%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Creatividad</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>80%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Dedicación</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>98%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>ProActividad</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>95%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Empatia</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>95%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Colaboración</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>96%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Seccion curriculum-->
-    <section id="curriculum" class="curriculum">
-        <div class="contenido-seccion">
-            <h2>Curriculum</h2>
-            <div class="fila">
-                <!-- Educacion -->
-                <div class="col izquierda">
-                    <h3>Educación</h3>
-                    <div class="item izq">
-                        <h4>Programación Front-End</h4>
-                        <span class="casa">Oracle - Alura latam</span>
-                        <span class="fecha">Agosto 2024 -  Enero 2025</span>
-                        <p>Curso enfocado en Front-End (HTML, CSS , Javascript y React) </p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Programación web FullStack</h4>
-                        <span class="casa">Codo a Codo - Agencias de habilidades para el futuro - Buenos Aires ciudad</span>
-                        <span class="fecha">Marzo a Julio 2024</span>
-                        <p>Curso enfocado en Java- </p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Diplomatura programación web FullStack</h4>
-                        <span class="casa">Universidad Tecnológica Nacional-UTN</span>
-                        <span class="fecha">Marzo a Diciembre 2023</span>
-                        <p>Curso enfocado en el Stack MERN (Moongose, Express, React, Node)- </p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Inglés - B2+</h4>
-                        <span class="casa">Summit - English courses</span>
-                        <span class="fecha">Agosto 2022 - Diciembre 2022</span>
-                        <p>Curso de Inglés - Gramática y conversación </p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Inglés - B1.2</h4>
-                        <span class="casa">Instituto online de lenguas extranjeras E-language Centre</span>
-                        <span class="fecha">Agosto 2021 - Diciembre 2021</span>
-                        <p>Curso de Inglés </p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Técnico Químico Industrial</h4>
-                        <span class="casa">Escuela Fray Luis Beltrán</span>
-                        <span class="fecha">Febrero 1998 - Noviembre 2003</span>
-                        <p>Escuela Secundaria </p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Experiencia Laboral -->
-                <div class="col derecha">
-                    <h3>Experiencia laboral</h3>
-                    <div class="item der">
-                        <h4>Analista laboratorio Químico</h4>
-                        <span class="casa">Holcim Argentina</span>
-                        <span class="fecha">Octubre 2008 - Actualidad</span>
-                        <p>Análisis químicos y físicos del proceso de producción de cemento </p>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
-                    </div>
-                    <div class="item der">
-                        <h4>Repositor</h4>
-                        <span class="casa">Supermercados Vea</span>
-                        <span class="fecha">Marzo a Julio 2006</span>
-                        <p>Repositor de salón</p>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Portfolio -->
-    <section id="portfolio" class="portfolio">
-        <div class="contenido-seccion">
-            <h2>PORTFOLIO</h2>
-            <div class="galeria">
-                <div class="proyecto">
-                    <img src="./assets/Encriptador (1).png" alt="Imagen encriptador de texto">
-                    <div class="overlay">
-                        <h3>Encriptador de texto</h3>
-                        <p>Proyecto desarrollado en cursado de Front-End en Oracle-AluraLatam</p>
-                        <a href="https://matt8421.github.io/EncriptadorDeTexto/" target="_blank"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="./assets/MoviesCaC (2).png" alt="Imagen Movies.CaC">
-                    <div class="overlay">
-                        <h3>Movies Codo a Codo</h3>
-                        <p>Proyecto desarrollado en cursado de Front-End en Codo a Codo</p>
-                        <a href="https://matt8421.github.io/CaC-ProyectoPeliculas/index.html" target="_blank"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="./assets/GuitarUdemy (1).png" alt="Imagen TiendaGuitarUdemy">
-                    <div class="overlay">
-                        <h3>Guitar LA</h3>
-                        <p>Proyecto desarrollado de Front-End en cursado de Udemy</p>
-                        <a href="https://github.com/Matt8421/GuitarLA" target="_blank"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="./assets/juegoAdivinaNumero (1).png" alt="Imagen juego adivina numero">
-                    <div class="overlay">
-                        <h3>Juego adivina el número secreto</h3>
-                        <p>Proyecto desarrollado en cursado de Oracle-AluraLatam</p>
-                        <a href="https://github.com/Matt8421/ProyectoLogicaProgramacion_Oracle" target="_blank"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="./assets/GestionArticulos.png" alt="Imagen gestor de articulos">
-                    <div class="overlay">
-                        <h3>Crud de Artículos</h3>
-                        <p>Proyecto desarrollado en cursado de Java-TalentoTech</p>
-                        <a href="https://github.com/Matt8421/CrudTalentoTech2025Final?tab=readme-ov-file" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    <h3>Soft Skills</h3>
+                    <div class="contenedor-badges">
+                        <div class="badge"><i class="fa-solid fa-comments"></i> Comunicación</div>
+                        <div class="badge"><i class="fa-solid fa-users"></i> Liderazgo</div>
+                        <div class="badge"><i class="fa-solid fa-lightbulb"></i> Resolución</div>
+                        <div class="badge"><i class="fa-solid fa-clock"></i> Organización</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Contacto -->
+
+    <!-- SECCION PORTFOLIO -->
+<section id="portfolio" class="portfolio">
+    <div class="contenido-seccion">
+        <h2>PORTFOLIO</h2>
+        <div class="galeria">
+            <!-- Proyecto 1: Encriptador -->
+            <div class="proyecto">
+                <img src="./assets/Encriptador (1).png" alt="Encriptador de texto">
+                <div class="overlay">
+                    <h3>Encriptador de texto</h3>
+                    <p>Oracle-AluraLatam (Front-End)</p>
+                    <div class="buttons">
+                        <a href="https://github.com/Matt8421/EncriptadorDeTexto" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> Repo</a>
+                        <a href="https://matt8421.github.io/EncriptadorDeTexto/" target="_blank" class="btn-project"><i class="fa-solid fa-rocket"></i> Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 2: Fokus Html,Css,JavasCript -->
+            <div class="proyecto">
+                <img src="./assets/ProyectoFokus.png" alt="App para el enfoque estudio-descanso">
+                <div class="overlay">
+                    <h3>Fokus -Estudio/Descanso</h3>
+                    <p></p>
+                    <div class="buttons">
+                        <a href="https://github.com/Matt8421/Focus" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> Repo</a>
+                        <a href="https://matt8421.github.io/Focus/" target="_blank" class="btn-project"><i class="fa-solid fa-rocket"></i> Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 3: Movies CaC -->
+            <div class="proyecto">
+                <img src="./assets/MoviesCaC (2).png" alt="Movies.CaC">
+                <div class="overlay">
+                    <h3>Movies Codo a Codo</h3>
+                    <p>Codo a Codo (Front-End)</p>
+                    <div class="buttons">
+                        <a href="https://github.com/Matt8421/CaC-ProyectoPeliculas" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> Repo</a>
+                        <a href="https://matt8421.github.io/CaC-ProyectoPeliculas/index.html" target="_blank" class="btn-project"><i class="fa-solid fa-rocket"></i> Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 4: Guitar LA -->
+            <div class="proyecto">
+                <img src="./assets/GuitarUdemy (1).png" alt="TiendaGuitarUdemy">
+                <div class="overlay">
+                    <h3>Guitar LA</h3>
+                    <p>Udemy (Front-End)</p>
+                    <div class="buttons">
+                        <a href="https://github.com/Matt8421/GuitarLA" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> Repo</a>
+                        <a href="https://lighthearted-smakager-ebbf7e.netlify.app/" target="_blank" class="btn-project"><i class="fa-solid fa-rocket"></i> Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 5: Adivina Numero -->
+            <div class="proyecto">
+                <img src="./assets/juegoAdivinaNumero (1).png" alt="Juego adivina numero">
+                <div class="overlay">
+                    <h3>Adivina el número</h3>
+                    <p>Oracle-AluraLatam (Lógica)</p>
+                    <div class="buttons">
+                        <a href="https://github.com/Matt8421/ProyectoLogicaProgramacion_Oracle" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> Repo</a>
+                        <a href="https://matt8421.github.io/ProyectoLogicaProgramacion_Oracle/" target="_blank" class="btn-project"><i class="fa-solid fa-rocket"></i> Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 6: CRUD Java -->
+            <div class="proyecto">
+                <img src="./assets/GestionArticulos.png" alt="Gestor de articulos">
+                <div class="overlay">
+                    <h3>CRUD de Artículos</h3>
+                    <p>Java - TalentoTech 2025</p>
+                    <div class="buttons">
+                        <a href="https://github.com/Matt8421/CrudTalentoTech2025Final" target="_blank" class="btn-project"><i class="fa-brands fa-github"></i> Repo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- SECCION CONTACTO -->
     <section id="contacto" class="contacto">
         <div class="contenido-seccion">
-            <h2>CONTACTO</h2>
+            <h2>Contacto</h2>
             <div class="fila">
-                <!-- Formulario -->
-                <div class="col"> 
-                    <input type="text" placeholder="Tú Nombre">
-                    <input type="text" placeholder="Número telefónico">
-                    <input type="text" placeholder="Dirección de correo">
-                    <input type="text" placeholder="Tema">
-                    <textarea name="" id="" cols="1" rows="1" placeholder="Mensaje"></textarea>
-                    <button>
-                        Enviar Mensaje<i class="fa-solid fa-paper-plane"></i>
+                <form id="form-contacto" action="https://formspree.io/f/mzdavnag" method="POST">
+                    <input type="text" name="nombre" placeholder="Nombre Completo" required>
+                    <input type="email" name="email" placeholder="Correo Electrónico" required>
+                    <textarea name="mensaje" cols="30" rows="10" placeholder="Mensaje" required></textarea>
+                    <button type="submit" id="btn-enviar">
+                        Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>
                         <span class="overlay"></span>
                     </button>
-                </div>
-                <!-- Mapa -->
-                <div class="col">
-                    <img src="./assets/NuevaDire2025 (1).png"  alt="Foto de mi ubicacion">
-                    <div class="info">
-                        <ul>
-                            <li>
-                                <i class="fa-solid fa-location-dot"></i>
-                                Francisco Moyano 1551 , Ciudad-Mendoza. Argentina
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-mobile-screen-button"></i>
-                                Llamanos: 0261-6741000
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-envelope"></i>
-                                Email: matiaslucero21884@gmail.com
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
-    <!-- Footer -->
-    <footer>
-        <a href="#inicio" class="arriba">
-            <i class="fa-solid fa-angles-up"></i>
-        </a>
-        <div class="redes">
-                <a href="https://github.com/Matt8421?tab=repositories" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/matias-joel-lucero-a1a884110/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/mati_lucero84/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        </div>
-    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
