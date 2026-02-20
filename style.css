@@ -14,18 +14,51 @@ html { scroll-behavior: smooth; }
 body { background-color: #1e2326; color: #fff; overflow-x: hidden; }
 
 /* =========================================
-   HEADER Y NAVEGACIÓN
+    HEADER Y NAVEGACIÓN
    ========================================= */
-.contenedor-header {
+/* .contenedor-header {
     background: rgba(30, 35, 38, 0.95);
     position: fixed; width: 100%; top: 0; z-index: 99;
     border-bottom: 1px solid #1cb698;
-}
+} */
 
-.contenedor-header header {
+/* .contenedor-header header {
     max-width: 1100px; margin: auto;
     display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;
 }
+ */
+
+/* =========================================
+    HEADER Y NAVEGACIÓN (ACTUALIZADO)
+   ========================================= */
+.contenedor-header {
+    background: transparent; /* <--- CAMBIO CLAVE */
+    position: fixed; 
+    width: 100%; 
+    top: 0; 
+    z-index: 99;
+    transition: 0.4s ease; /* <--- PARA QUE EL CAMBIO SEA SUAVE */
+    border-bottom: 1px solid transparent; 
+}
+
+/* Esta es la clase que el JS va a "activar" mágicamente al bajar */
+.contenedor-header.on-scroll {
+    background: rgba(30, 35, 38, 0.95);
+    border-bottom: 1px solid #1cb698;
+    padding: 5px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.contenedor-header header {
+    max-width: 1100px; 
+    margin: auto;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 20px;
+}
+
+
 
 .logo a { font-family: 'Righteous'; font-size: 28px; color: #1cb698; text-decoration: none; }
 
@@ -38,7 +71,7 @@ nav ul li a:hover { color: #1cb698; }
 .nav-cv { background: #1cb698; padding: 8px 15px; border-radius: 5px; font-weight: bold; }
 
 /* =========================================
-   SECCIÓN INICIO
+    SECCIÓN INICIO
    ========================================= */
 .inicio {
     height: 100vh; display: flex; align-items: center;
@@ -66,7 +99,7 @@ nav ul li a:hover { color: #1cb698; }
 .redes a:hover { background: #1cb698; border-color: #1cb698; transform: translateY(-5px); }
 
 /* =========================================
-   ESTILOS GENERALES DE SECCIÓN
+    ESTILOS GENERALES DE SECCIÓN
    ========================================= */
 .sobremi, .skills, .portfolio, .contacto { padding: 80px 20px; }
 
@@ -80,24 +113,239 @@ nav ul li a:hover { color: #1cb698; }
 
 h2 { font-family: 'Righteous'; font-size: 40px; text-align: center; margin-bottom: 40px; color: #1cb698; text-transform: uppercase; }
 
-/* =========================================
-   SKILLS (BADGES)
-   ========================================= */
-.skills { background-color: #252a2e; }
 
-.contenedor-badges { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-
-.badge {
-    background: #1e2326; border: 1px solid #1cb698; padding: 10px 20px;
-    border-radius: 10px; display: flex; align-items: center; gap: 10px;
-    transition: .3s; cursor: default;
+/* SOBRE MI - Estructura de columnas */
+.sobremi .fila {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
 }
 
-.badge:hover { background: #1cb698; transform: scale(1.05); }
+.sobremi .col {
+    flex: 1;
+    min-width: 300px; /* Evita que se amontonen en tablets */
+}
 
-.badge i { color: #1cb698; font-size: 20px; }
+.sobremi .col h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
 
-.badge:hover i { color: #fff; }
+.sobremi .col ul {
+    list-style: none;
+}
+
+.sobremi .col ul li {
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+.sobremi .col ul li strong {
+    color: #1cb698;
+    margin-right: 10px;
+}
+
+/* Contenedor de Intereses */
+.contenedor-intereses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+}
+
+.interes {
+    background-color: #252a2e;
+    border-radius: 10px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: .3s;
+    border: 1px solid transparent;
+}
+
+.interes:hover { border: 1px solid #1cb698; transform: translateY(-5px); }
+
+.interes i { font-size: 30px; margin-bottom: 10px; color: #1cb698; }
+.interes span { font-size: 12px; font-weight: bold; text-transform: uppercase; }
+
+
+
+
+/* =========================================
+    SKILLS (BADGES)
+   ========================================= */
+
+.skills { background-color: #252a2e; padding: 80px 20px; }
+
+.skills .fila {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.skills .col { flex: 1; min-width: 300px; }
+
+.skills h3 { font-family: 'Righteous'; text-align: center; margin-bottom: 30px; font-size: 24px; color: #fff; }
+
+.skills .contenedor-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.badge {
+    background: #1e2326;
+    border: 1px solid #1cb698;
+    padding: 10px 18px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.badge:hover {
+    background: #1cb698;
+    color: #1e2326;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(28, 182, 152, 0.4);
+}
+
+.badge i { color: #1cb698; font-size: 18px; }
+.badge:hover i { color: #1e2326; }
+
+
+/* CERTIFICACIONES - Micro Badges */
+.contenedor-micro-badges {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.micro-badge-cert {
+    background: #252a2e;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+.micro-badge-cert:hover {
+    border-color: #1cb698;
+    background: #2d3338;
+    transform: translateY(-3px);
+}
+
+.badge-info h4 {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.badge-info span {
+    display: block;
+    font-size: 14px;
+    color: #1cb698;
+    margin-bottom: 5px;
+}
+
+.badge-info small {
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* --- AGREGÁ ESTO DEBAJO DE LO QUE YA TENÉS --- */
+
+.badge-icon i {
+    font-size: 38px; 
+    color: #1cb698;
+    transition: 0.3s;
+    display: block;
+    width: 50px;
+    text-align: center;
+}
+
+.micro-badge-cert:hover .badge-icon i {
+    transform: scale(1.1); 
+    filter: drop-shadow(0 0 8px rgba(28, 182, 152, 0.5));
+}
+
+
+
+
+/* =========================================
+   SECCIÓN CURRICULUM (RESTAURACIÓN TIMELINE)
+   ========================================= */
+.curriculum { background-color: #1e2326; padding: 80px 20px; }
+
+.curriculum .timeline {
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 40px;
+    border-left: 2px solid #1cb698; /* La línea verde vertical */
+}
+
+.timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 40px 0 25px -55px; /* Para que el icono pise la línea */
+    background: #1e2326;
+    padding: 5px 10px;
+}
+
+.timeline-header i {
+    background: #1cb698;
+    color: #1e2326;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.curriculum .item {
+    background: #252a2e;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+/* El punto conector en la línea */
+.curriculum .item::before {
+    content: '';
+    position: absolute;
+    width: 14px; height: 14px;
+    background-color: #1cb698;
+    border-radius: 50%;
+    left: -48px; top: 25px;
+    box-shadow: 0 0 8px #1cb698;
+}
+
+.item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.item h4 { font-size: 18px; color: #fff; }
+.item .fecha { color: #1cb698; font-weight: bold; font-size: 13px; }
+.item .casa { display: block; font-weight: bold; color: #888; font-size: 14px; margin-bottom: 8px; }
+.item p { font-size: 14px; line-height: 1.6; color: #ccc; }
+
+
 
 /* =========================================
    PORTFOLIO (GRILLA Y CARDS)
@@ -229,4 +477,14 @@ footer p {
     nav.responsive ul li { margin: 10px 0; }
     .nav-responsive { display: block; }
     .inicio h1 { font-size: 35px; }
+
+    .curriculum .timeline {
+        padding-left: 20px;
+    }
+    .timeline-header {
+        margin-left: -35px; /* Ajuste para que no se corte el icono en el borde izquierdo */
+    }
+    .curriculum .item::before {
+        left: -28px; /* Ajuste del punto conector */
+    }
 }

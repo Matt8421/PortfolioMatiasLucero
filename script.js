@@ -94,5 +94,14 @@ window.addEventListener('scroll', () => {
 });
 
 
+// Efecto de Header: Transparente a Sólido al scrollear
+window.addEventListener('scroll', function() {
+    const header = document.querySelector(".contenedor-header");
+    if (window.scrollY > 50) {
+        header.classList.add("on-scroll");
+    } else {
+        header.classList.remove("on-scroll");
+    }
+});
 
 
