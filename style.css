@@ -1,5 +1,5 @@
 /* =========================================
-   FUENTES Y CONFIGURACIÓN BASE
+    FUENTES Y CONFIGURACIÓN BASE
    ========================================= */
 @import url('https://fonts.googleapis.com');
 
@@ -59,30 +59,74 @@ nav ul li a:hover { color: #1cb698; }
 /* =========================================
     SECCIÓN INICIO
    ========================================= */
+
 .inicio {
-    height: 100vh; display: flex; align-items: center;
-    background: linear-gradient(to top, rgba(30, 35, 38, .9), rgba(30, 35, 38, .5)), url(assets/Fondo\ \(2\).jpg);
-    background-size: cover; background-position: center;
+    height: 100vh; 
+    display: flex; 
+    align-items: center;
+    /* Ajustamos el degradado para que el texto 'explote' visualmente */
+    background: linear-gradient(to top, rgba(30, 35, 38, 1) 0%, rgba(30, 35, 38, 0.4) 50%, rgba(30, 35, 38, 0.2) 100%), 
+                url("assets/Fondo (2).jpg"); 
+    
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed; /* <--- Efecto Parallax: la imagen se queda quieta al bajar */
 }
 
-.contenido-banner { text-align: center; margin: auto; }
+.contenido-banner { 
+    text-align: center; 
+    margin: auto; 
+    position: relative;
+    z-index: 2;
+}
 
 .contenedor-img img {
-    width: 200px; height: 200px; border-radius: 50%;
-    border: 5px solid #1cb698; object-fit: cover; margin-bottom: 20px;
+    width: 200px; 
+    height: 200px; 
+    border-radius: 50%;
+    border: 5px solid #1cb698; 
+    object-fit: cover; 
+    margin-bottom: 20px;
+    /* Le sumamos un brillo verde para que se separe del fondo azulado */
+    box-shadow: 0 0 30px rgba(28, 182, 152, 0.4);
 }
 
-.inicio h1 { font-family: 'Righteous'; font-size: 50px; margin-bottom: 10px; }
+.inicio h1 { 
+    font-family: 'Righteous'; 
+    font-size: 50px; 
+    margin-bottom: 10px;
+    /* Sombra para que no se pierda con los puntos brillantes del fondo */
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.9);
+}
 
-.inicio h2 { font-size: 18px; font-weight: 300; color: #1cb698; }
+.inicio h2 { 
+    font-size: 18px; 
+    font-weight: 300; 
+    color: #1cb698;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
 .redes a {
-    color: #fff; text-decoration: none; border: 1px solid #fff;
-    border-radius: 50%; width: 40px; height: 40px; line-height: 40px;
-    display: inline-block; margin: 20px 10px; transition: .3s;
+    color: #fff; 
+    text-decoration: none; 
+    border: 1px solid #fff;
+    border-radius: 50%; 
+    width: 40px; 
+    height: 40px; 
+    line-height: 40px;
+    display: inline-block; 
+    margin: 20px 10px; 
+    transition: .3s;
 }
 
-.redes a:hover { background: #1cb698; border-color: #1cb698; transform: translateY(-5px); }
+.redes a:hover { 
+    background: #1cb698; 
+    border-color: #1cb698; 
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(28, 182, 152, 0.4);
+}
+
 
 /* =========================================
     ESTILOS GENERALES DE SECCIÓN
@@ -97,10 +141,23 @@ nav ul li a:hover { color: #1cb698; }
 
 .contenido-seccion.visible { opacity: 1; transform: translateY(0); }
 
-h2 { font-family: 'Righteous'; font-size: 40px; text-align: center; margin-bottom: 40px; color: #1cb698; text-transform: uppercase; }
+h2 { font-family: 'Righteous'; font-size: 40px; text-align: center; margin-bottom: 50px; color: #1cb698; text-transform: uppercase; }
 
 
 /* SOBRE MI - Estructura de columnas */
+
+.sobremi p {
+    line-height: 1.8;
+    margin-bottom: 50px;  /* Espacio clave: Separa el parrafo de las columnas */
+    font-size: 16px;
+    color: #ccc;
+}
+
+.sobremi p span{
+    color: #1cb698;
+    font-weight: bold;
+}
+
 .sobremi .fila {
     display: flex;
     flex-wrap: wrap;
@@ -115,7 +172,9 @@ h2 { font-family: 'Righteous'; font-size: 40px; text-align: center; margin-botto
 
 .sobremi .col h3 {
     font-size: 24px;
-    margin-bottom: 20px;
+    font-family: "Righteous";
+    margin-bottom: 30px; /* Mas espacio debajo de datos personales */
+    color: #fff;
 }
 
 .sobremi .col ul {
@@ -123,36 +182,42 @@ h2 { font-family: 'Righteous'; font-size: 40px; text-align: center; margin-botto
 }
 
 .sobremi .col ul li {
-    margin: 15px 0;
+    margin: 20px 0; /* Aumentamos el espacio entre cada dato personal */
     font-size: 16px;
+    display: flex;
+    align-items: center;
 }
 
 .sobremi .col ul li strong {
     color: #1cb698;
-    margin-right: 10px;
+    width: 130px; /* Alineamos el texto despues del titulo */
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 14px;
 }
 
 /* Contenedor de Intereses */
 .contenedor-intereses {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 20px;          /* Mas aire entre los cuadros de intereses */
 }
 
 .interes {
     background-color: #252a2e;
     border-radius: 10px;
-    padding: 20px 10px;
+    padding: 25px 15px;           /* Mas relleno interno */
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: .3s;
     border: 1px solid transparent;
+    height: 120px;      /* Altura fija para q sean simetricos */
 }
 
-.interes:hover { border: 1px solid #1cb698; transform: translateY(-5px); }
+.interes:hover { border: 1px solid #1cb698; transform: translateY(-5px); background-color: #2d3338; }
 
-.interes i { font-size: 30px; margin-bottom: 10px; color: #1cb698; }
+.interes i { font-size: 30px; margin-bottom: 15px; color: #1cb698; }
 .interes span { font-size: 12px; font-weight: bold; text-transform: uppercase; }
 
 
@@ -276,7 +341,7 @@ h2 { font-family: 'Righteous'; font-size: 40px; text-align: center; margin-botto
 
 
 /* =========================================
-   SECCIÓN CURRICULUM (RESTAURACIÓN TIMELINE)
+    SECCIÓN CURRICULUM (RESTAURACIÓN TIMELINE)
    ========================================= */
 .curriculum { background-color: #1e2326; padding: 80px 20px; }
 
@@ -334,7 +399,7 @@ h2 { font-family: 'Righteous'; font-size: 40px; text-align: center; margin-botto
 
 
 /* =========================================
-   PORTFOLIO (GRILLA Y CARDS)
+    PORTFOLIO (GRILLA Y CARDS)
    ========================================= */
 .portfolio { background-color: #1e2326; }
 
@@ -377,7 +442,7 @@ h2 { font-family: 'Righteous'; font-size: 40px; text-align: center; margin-botto
 .btn-project:hover { background: #fff; color: #1e2326; }
 
 /* =========================================
-   CONTACTO
+    CONTACTO
    ========================================= */
 #form-contacto { max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px; }
 
@@ -447,9 +512,8 @@ footer p {
 }
 
 
-
 /* =========================================
-   RESPONSIVE
+    RESPONSIVE
    ========================================= */
 .nav-responsive { display: none; font-size: 25px; color: #1cb698; cursor: pointer; }
 
