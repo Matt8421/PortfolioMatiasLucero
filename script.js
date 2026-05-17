@@ -114,14 +114,15 @@ function seleccionar() {
     document.body.prepend(canvas);
     const ctx = canvas.getContext("2d");
  
-    let W, H;
-    const COLOR = "28, 182, 152";
+    let W, H, nodes = [], mouseX = 0, mouseY = 0;
+    const COLOR_PRIMARY = "28, 182, 152"; // #1cb698 en RGB
+    const NODE_COUNT    = 70;
+    const CONNECT_DIST  = 140;
  
-    // ── NODOS ──────────────────────────────
-    const NODE_COUNT   = 70;
-    const CONNECT_DIST = 140;
-    let nodes  = [];
-    let mouseX = 0, mouseY = 0;
+    function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+    }
  
     function createNodes() {
         nodes = [];
@@ -129,93 +130,25 @@ function seleccionar() {
             nodes.push({
                 x:  Math.random() * W,
                 y:  Math.random() * H,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
+                vx: (Math.random() - 0.5) * 0.4,
+                vy: (Math.random() - 0.5) * 0.4,
                 r:  Math.random() * 2 + 1,
-                pulseTimer: Math.random() * 300,
             });
         }
     }
  
-    // ── ESTRELLAS ──────────────────────────
-    const STAR_COUNT = 120;
-    let stars = [];
- 
-    function createStars() {
-        stars = [];
-        for (let i = 0; i < STAR_COUNT; i++) {
-            stars.push({
-                x:       Math.random() * W,
-                y:       Math.random() * H,
-                r:       Math.random() * 1.2 + 0.3,
-                alpha:   Math.random(),
-                dAlpha:  (Math.random() * 0.008 + 0.002) * (Math.random() < 0.5 ? 1 : -1),
-            });
-        }
-    }
- 
-    // ── PULSOS (ondas que emiten los nodos) ─
-    let pulses = [];
- 
-    // ── METEOROS ───────────────────────────
-    let meteors = [];
- 
-    function spawnMeteor() {
-        const startX = Math.random() * W * 1.5;
-        meteors.push({
-            x:     startX,
-            y:     -20,
-            len:   Math.random() * 120 + 60,   // largo de la estela
-            speed: Math.random() * 6 + 5,       // velocidad
-            angle: Math.PI / 5,                 // ~36° diagonal
-            alpha: Math.random() * 0.6 + 0.4,
-            width: Math.random() * 1.5 + 0.5,
-            life:  1,                           // 1 = plena vida, baja hasta 0
-        });
-    }
- 
-    // ── RESIZE ─────────────────────────────
-    function resize() {
-        W = canvas.width  = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-    }
- 
-    // ── DRAW LOOP ──────────────────────────
     function draw() {
         ctx.clearRect(0, 0, W, H);
  
-        // — Estrellas parpadeantes —
-        stars.forEach(s => {
-            s.alpha += s.dAlpha;
-            if (s.alpha >= 1)   { s.alpha = 1;   s.dAlpha *= -1; }
-            if (s.alpha <= 0.1) { s.alpha = 0.1; s.dAlpha *= -1; }
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${COLOR}, ${s.alpha * 0.6})`;
-            ctx.fill();
-        });
- 
-        // — Nodos: mover y dibujar —
+        // Actualizar posición de nodos
         nodes.forEach(n => {
             n.x += n.vx;
             n.y += n.vy;
             if (n.x < 0 || n.x > W) n.vx *= -1;
             if (n.y < 0 || n.y > H) n.vy *= -1;
- 
-            // Disparo de pulso aleatorio
-            n.pulseTimer--;
-            if (n.pulseTimer <= 0) {
-                pulses.push({ x: n.x, y: n.y, r: n.r + 2, maxR: 40, alpha: 0.7 });
-                n.pulseTimer = Math.random() * 400 + 200;
-            }
- 
-            ctx.beginPath();
-            ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${COLOR}, 0.5)`;
-            ctx.fill();
         });
  
-        // — Conexiones entre nodos —
+        // Dibujar conexiones
         for (let i = 0; i < nodes.length; i++) {
             for (let j = i + 1; j < nodes.length; j++) {
                 const dx   = nodes[i].x - nodes[j].x;
@@ -224,7 +157,7 @@ function seleccionar() {
                 if (dist < CONNECT_DIST) {
                     const alpha = (1 - dist / CONNECT_DIST) * 0.15;
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(${COLOR}, ${alpha})`;
+                    ctx.strokeStyle = `rgba(${COLOR_PRIMARY}, ${alpha})`;
                     ctx.lineWidth   = 0.8;
                     ctx.moveTo(nodes[i].x, nodes[i].y);
                     ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -233,88 +166,46 @@ function seleccionar() {
             }
         }
  
-        // — Conexión mouse → nodos cercanos —
-        const scrollY = window.scrollY;
+        // Conexión con el mouse
         nodes.forEach(n => {
             const dx   = n.x - mouseX;
-            const dy   = n.y - (mouseY + scrollY);
+            const dy   = n.y - mouseY;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < CONNECT_DIST * 1.5) {
                 const alpha = (1 - dist / (CONNECT_DIST * 1.5)) * 0.35;
                 ctx.beginPath();
-                ctx.strokeStyle = `rgba(${COLOR}, ${alpha})`;
+                ctx.strokeStyle = `rgba(${COLOR_PRIMARY}, ${alpha})`;
                 ctx.lineWidth   = 1;
                 ctx.moveTo(n.x, n.y);
-                ctx.lineTo(mouseX, mouseY + scrollY);
+                ctx.lineTo(mouseX, mouseY);
                 ctx.stroke();
             }
         });
  
-        // — Pulsos expansivos —
-        pulses = pulses.filter(p => p.alpha > 0.01);
-        pulses.forEach(p => {
-            p.r     += 0.8;
-            p.alpha *= 0.94;
+        // Dibujar nodos
+        nodes.forEach(n => {
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(${COLOR}, ${p.alpha})`;
-            ctx.lineWidth   = 1;
-            ctx.stroke();
-        });
- 
-        // — Meteoros —
-        meteors = meteors.filter(m => m.life > 0.01 && m.y < H + 50);
-        meteors.forEach(m => {
-            m.x    += Math.cos(m.angle) * m.speed;
-            m.y    += Math.sin(m.angle) * m.speed;
-            m.life -= 0.012;
- 
-            const tailX = m.x - Math.cos(m.angle) * m.len;
-            const tailY = m.y - Math.sin(m.angle) * m.len;
- 
-            const grad = ctx.createLinearGradient(tailX, tailY, m.x, m.y);
-            grad.addColorStop(0, `rgba(${COLOR}, 0)`);
-            grad.addColorStop(0.6, `rgba(${COLOR}, ${m.alpha * m.life * 0.4})`);
-            grad.addColorStop(1, `rgba(255, 255, 255, ${m.alpha * m.life})`);
- 
-            ctx.beginPath();
-            ctx.moveTo(tailX, tailY);
-            ctx.lineTo(m.x, m.y);
-            ctx.strokeStyle = grad;
-            ctx.lineWidth   = m.width;
-            ctx.lineCap     = "round";
-            ctx.stroke();
- 
-            // destello en la punta
-            ctx.beginPath();
-            ctx.arc(m.x, m.y, m.width * 1.2, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${m.alpha * m.life * 0.9})`;
+            ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${COLOR_PRIMARY}, 0.5)`;
             ctx.fill();
         });
  
         requestAnimationFrame(draw);
     }
  
-    // — Spawn de meteoros: cada 2-5 segundos —
-    function scheduleMeteor() {
-        spawnMeteor();
-        setTimeout(scheduleMeteor, Math.random() * 3000 + 2000);
-    }
- 
-    // — Eventos —
     document.addEventListener("mousemove", e => {
         mouseX = e.clientX;
-        mouseY = e.clientY;
+        mouseY = e.clientY + window.scrollY; // compensar scroll
     });
  
-    window.addEventListener("resize", () => { resize(); createNodes(); createStars(); });
+    window.addEventListener("resize", () => { resize(); createNodes(); });
  
     resize();
     createNodes();
-    createStars();
-    scheduleMeteor();
     draw();
 })();
+ 
+ 
 // =========================================
 //   HEADER: TRANSPARENTE → SÓLIDO
 // =========================================
@@ -389,3 +280,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+ 
+// =========================================
+//   SPLIT TEXT — Animación letra por letra en h1
+// =========================================
+(function splitHeroText() {
+    const h1 = document.querySelector(".inicio h1");
+    if (!h1) return;
+ 
+    const text = h1.textContent;
+    h1.textContent = "";
+ 
+    [...text].forEach((char, i) => {
+        const span = document.createElement("span");
+        span.className = char === " " ? "letra espacio" : "letra";
+        span.textContent = char === " " ? "\u00A0" : char;
+        span.style.setProperty("--i", i);
+        h1.appendChild(span);
+    });
+})();

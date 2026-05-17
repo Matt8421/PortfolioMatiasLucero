@@ -199,6 +199,9 @@ nav ul li a:hover { color: #1cb698; }
     position: relative;
     z-index: 2;
     animation: fadeInUp 1s ease-out both;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
  
 @keyframes fadeInUp {
@@ -228,7 +231,7 @@ nav ul li a:hover { color: #1cb698; }
     margin-bottom: 10px;
     text-shadow: 2px 2px 15px rgba(0,0,0,0.9);
     cursor: default;
-    display: inline-block;
+    display: block;
 }
  
 /* Cada letra del nombre envuelta en <span> por JS */
