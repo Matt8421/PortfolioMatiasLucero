@@ -2,7 +2,7 @@
 
 Sitio web personal donde presento mi perfil como **Desarrollador FullStack**, mis proyectos, experiencia y stack tecnológico.
 
-🔗 **[Ver demo en vivo](https://github.com/Matt8421/PortfolioMatiasLucero)**
+🔗 **[Ver demo en vivo](https://matt8421.github.io/PortfolioMatiasLucero/)**
 
 ---
 
